@@ -1,0 +1,22 @@
+{
+  "name": "skribi",
+  "version": "0.1.0",
+  "description": "simple editor that automatically converts your markdown to rich text as you write",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/henryhamon/skribi"
+  },
+  "keywords": [
+    "markdown",
+    "editor",
+    "html",
+    "vanilla",
+    "javascript"
+  ],
+  "author": "Henry Hamon <henry@hamonrails.com.br> (https://www.github.com/henryhamon)",
+  "license": "MIT"
+}
