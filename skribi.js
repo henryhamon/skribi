@@ -69,6 +69,10 @@ const Markdown2Html = class {
             new Pattern(/(^|\n)(#{5}\s+)(.*)/, '<h5>$3</h5>'),
             new Pattern(/(^|\n)(#{6}\s+)(.*)/, '<h6>$3</h6>'),
         ]));
+        this.rules.push(new Rule('Bold', [
+            new Pattern(/(\*\*|__)(.*?)\1/, '<strong>$2</strong>'),
+            new Pattern(/(\_\_|__)(.*?)\1/, '<strong>$2</strong>')
+        ]));
     }
 
     render(markdown) {

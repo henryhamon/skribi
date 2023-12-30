@@ -37,6 +37,14 @@ describe('Markdown2Html', () => {
         }
     });
 
+    test('should render bold', () => {
+        const markdown2Html = new Markdown2Html();
+        let htmlResult = markdown2Html.render('This text contains **some bold** words.')
+        expect(htmlResult).toContain('This text contains <strong>some bold</strong> words.')
+        htmlResult = markdown2Html.render('It is possible to use __two underscores__ too.') 
+        expect(htmlResult).toContain('It is possible to use <strong>two underscores</strong> too.')
+    });
+
 
     // Add more test cases as needed for specific functionality
 });
