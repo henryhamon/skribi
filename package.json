@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "simple editor that automatically converts your markdown to rich text as you write",
   "main": "skribi.js",
+  "homepage": "https://github.com/henryhamon/skribi#readme",
   "scripts": {
     "test": "jest",
     "test:watch": "npm run test -- --watch"
