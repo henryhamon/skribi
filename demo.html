@@ -39,6 +39,12 @@
 
 </body>
 
-<script src="index.js"></script>
+<script src="skribi.js"></script>
+
+<script >
+document.querySelectorAll("[data-skribi]").forEach( el => {
+    let s = new Skribi(el);
+});
+</script>
 
 </html>

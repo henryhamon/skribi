@@ -25,7 +25,11 @@
     "url": "https://github.com/henryhamon/skribi/issues"
   },
   "devDependencies": {
-    "jest": "^29.4.3",
+    "jest": "^29.7.0",
+    "jsdom": "^23.0.1",
     "supertest": "^6.3.3"
+  },
+  "dependencies": {
+    "require": "^2.4.20"
   }
 }
