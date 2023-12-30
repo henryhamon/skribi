@@ -23,10 +23,16 @@ const Pattern = class {
 }
 
 const Skribi = class {
+    /**
+     * Initializes a new instance of the Constructor class.
+     *
+     * @param {Element} el - The element to be associated with the instance.
+     */
     constructor(el) {
         this.el = el;
         this.el.style.whiteSpace = 'pre-wrap';
         this.el.contentEditable = true;
+        this.content = this.el.innerHTML;
     }
 
 }

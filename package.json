@@ -2,13 +2,14 @@
   "name": "skribi",
   "version": "0.1.0",
   "description": "simple editor that automatically converts your markdown to rich text as you write",
-  "main": "index.js",
+  "main": "skribi.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/henryhamon/skribi"
+    "url": "git+https://github.com:henryhamon/skribi.git"
   },
   "keywords": [
     "markdown",
@@ -18,5 +19,12 @@
     "javascript"
   ],
   "author": "Henry Hamon <henry@hamonrails.com.br> (https://www.github.com/henryhamon)",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/henryhamon/skribi/issues"
+  },
+  "devDependencies": {
+    "jest": "^29.4.3",
+    "supertest": "^6.3.3"
+  }
 }
