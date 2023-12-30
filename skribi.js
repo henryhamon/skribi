@@ -22,7 +22,7 @@ const Pattern = class {
     
 }
 
-const Rules = class {
+const Rule = class {
     name;
     patterns;
     /**
@@ -47,6 +47,40 @@ const Rules = class {
     }
 }
 
+/*
+* Regex Markdown parser to Html
+*/
+const Markdown2Html = class {
+    rules = [];
+
+    /**
+     * Initializes a new instance of the class.
+     */
+    constructor() {
+        this.#defaultRules();
+    }
+
+    #defaultRules() {
+        this.rules.push(new Rule('Heading', [
+            new Pattern(/(^|\n)(#\s+)(.*)/g,'<h1>$3</h1>'),
+            new Pattern(/(^|\n)(#{2}\s+)(.*)/, '<h2>$3</h2>'),
+            new Pattern(/(^|\n)(#{3}\s+)(.*)/, '<h3>$3</h3>'),
+            new Pattern(/(^|\n)(#{4}\s+)(.*)/, '<h4>$3</h4>'),
+            new Pattern(/(^|\n)(#{5}\s+)(.*)/, '<h5>$3</h5>'),
+            new Pattern(/(^|\n)(#{6}\s+)(.*)/, '<h6>$3</h6>'),
+        ]));
+    }
+
+    render(markdown) {
+        // Implement Markdown to HTML conversion logic here
+        let output = '';
+        this.rules.forEach(r => {
+            output = r.apply(markdown)
+        })
+        return output
+    }
+}
+
 const Skribi = class {
     /**
      * Initializes a new instance of the Constructor class.
@@ -62,4 +96,4 @@ const Skribi = class {
 
 }
 
-module.exports = {Pattern, Rules, Skribi}
+module.exports = {Pattern, Rule, Markdown2Html, Skribi}

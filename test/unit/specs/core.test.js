@@ -1,6 +1,6 @@
 
 // Import the Pattern and Rules class
-const {Pattern, Rules} = require('../../../skribi.js');
+const {Pattern, Rule} = require('../../../skribi.js');
 
 // Test suite for the Pattern class
 describe('Pattern', () => {
@@ -33,20 +33,20 @@ describe('Rules', () => {
     test('should create a Rules instance with the given name and patterns', () => {
         const name = 'TestRules';
         const patterns = [new Pattern(/test/g, 'example')];
-        const rules = new Rules(name, patterns);
+        const rule = new Rule(name, patterns);
 
-        expect(rules.name).toBe(name);
-        expect(rules.patterns).toEqual(patterns);
+        expect(rule.name).toBe(name);
+        expect(rule.patterns).toEqual(patterns);
     });
 
     // Test case for the apply method
     test('should apply the patterns to the raw input', () => {
         const name = 'TestRules';
         const patterns = [new Pattern(/fox/g, 'dog'), new Pattern(/brown/g, 'red')];
-        const rules = new Rules(name, patterns);
+        const rule = new Rule(name, patterns);
 
         const rawInput = 'The quick brown fox jumps over the lazy fox';
-        const result = rules.apply(rawInput);
+        const result = rule.apply(rawInput);
 
         expect(result).toBe('The quick red dog jumps over the lazy dog');
     });
