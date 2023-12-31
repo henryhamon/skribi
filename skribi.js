@@ -93,6 +93,13 @@ const Markdown2Html = class {
             new Pattern(/<li>(.+)<\/li>/g, '<ul>$&</ul>'),
         ]));
 
+        /* --> Problems with ordered lists
+        this.rules.push(new Rule('Ordered List', [
+            new Pattern(/(^|\n)[0-9]+\.\s(.*)/g, '<li>$2</li>'),
+            new Pattern(/(?<!<\/ul>)(<li[^>]*>.*?<\/li>)/g, '<ol>$&</ol>'),
+            new Pattern(/<\/ol><ol>/g, '') // fixes an issue with nested ordered lists
+        ]));
+        //*/
     }
 
     render(markdown) {
