@@ -45,6 +45,23 @@ describe('Markdown2Html', () => {
         expect(htmlResult).toContain('It is possible to use <strong>two underscores</strong> too.')
     });
 
+    test('should render markdown to HTML using default rules', () => {
+        const markdown2Html = new Markdown2Html();
+
+        // Example markdown content
+        const markdownContent = 'Text\n**Bold Text**\n\n*Italic Text* ~~strike you out~~  \n>This is a simple blockquote.\nThe end of one section.\n-----\n\nThe start of another.\n ![picsum pic](https://fastly.picsum.photos/id/0/5000/3333.jpg) ';
+
+        // Call the render method
+        const htmlResult = markdown2Html.render(markdownContent);
+
+        // Assert that the rendered HTML contains expected tags and content
+        expect(htmlResult).toContain('<strong>Bold Text</strong>');
+        expect(htmlResult).toContain('<i>Italic Text</i>');
+        expect(htmlResult).toContain('<blockquote>This is a simple blockquote.</blockquote>');
+        expect(htmlResult).toContain('<hr />');
+        expect(htmlResult).toContain('<del>strike you out</del>');
+        expect(htmlResult).toContain("<img src='https://fastly.picsum.photos/id/0/5000/3333.jpg' alt='picsum pic' >");
+    });
 
     // Add more test cases as needed for specific functionality
 });

@@ -63,17 +63,29 @@ const Markdown2Html = class {
     #defaultRules() {
         this.rules.push(new Rule('Heading', [
             new Pattern(/(^|\n)(#\s+)(.*)/g,'<h1>$3</h1>'),
-            new Pattern(/(^|\n)(#{2}\s+)(.*)/, '<h2>$3</h2>'),
-            new Pattern(/(^|\n)(#{3}\s+)(.*)/, '<h3>$3</h3>'),
-            new Pattern(/(^|\n)(#{4}\s+)(.*)/, '<h4>$3</h4>'),
-            new Pattern(/(^|\n)(#{5}\s+)(.*)/, '<h5>$3</h5>'),
-            new Pattern(/(^|\n)(#{6}\s+)(.*)/, '<h6>$3</h6>'),
+            new Pattern(/(^|\n)(#{2}\s+)(.*)/gm, '<h2>$3</h2>'),
+            new Pattern(/(^|\n)(#{3}\s+)(.*)/gm, '<h3>$3</h3>'),
+            new Pattern(/(^|\n)(#{4}\s+)(.*)/gm, '<h4>$3</h4>'),
+            new Pattern(/(^|\n)(#{5}\s+)(.*)/gm, '<h5>$3</h5>'),
+            new Pattern(/(^|\n)(#{6}\s+)(.*)/gm, '<h6>$3</h6>'),
         ]));
 
         this.rules.push(new Rule('Bold', [
-            new Pattern(/(\*\*|__)(.*?)\1/, '<strong>$2</strong>'),
-            new Pattern(/(\_\_|__)(.*?)\1/, '<strong>$2</strong>')
+            new Pattern(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>'),
+            new Pattern(/(\_\_|__)(.*?)\1/g, '<strong>$2</strong>')
         ]));
+
+        this.rules.push(new Rule('Italic', [
+            new Pattern(/\*\s?([^\n]+)\*/g, '<i>$1</i>'),
+            new Pattern(/\_\s?([^\n]+)\_/g, '<i>$1</i>')
+        ]));
+
+        this.rules.push(new Rule('Del', [new Pattern(/\~\~(.*?)\~\~/g, '<del>$1</del>')]));
+        this.rules.push(new Rule('Quote', [new Pattern(/\:\"(.*?)\"\:/g, '<q>$1</q>')]));
+        this.rules.push(new Rule('Horizontal Rule', [new Pattern(/(^|\n)-{5,}/g, '<hr />')]));
+        this.rules.push(new Rule('Blockquotes', [new Pattern(/(^|\n)(&gt;|\>)(.*)/g, '<blockquote>$3</blockquote>')]));
+        this.rules.push(new Rule('Image', [new Pattern(/!\[([^\[]+)\]\(([^\)]+)\)/g, '<img src=\'$2\' alt=\'$1\' >')]));
+        this.rules.push(new Rule('Link', [new Pattern(/\[([^\n]+)\]\(([^\n]+)\)/g, '<a href="$2" target="_blank">$1</a>')]));
     }
 
     render(markdown) {
