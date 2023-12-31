@@ -86,6 +86,13 @@ const Markdown2Html = class {
         this.rules.push(new Rule('Blockquotes', [new Pattern(/(^|\n)(&gt;|\>)(.*)/g, '<blockquote>$3</blockquote>')]));
         this.rules.push(new Rule('Image', [new Pattern(/!\[([^\[]+)\]\(([^\)]+)\)/g, '<img src=\'$2\' alt=\'$1\' >')]));
         this.rules.push(new Rule('Link', [new Pattern(/\[([^\n]+)\]\(([^\n]+)\)/g, '<a href="$2" target="_blank">$1</a>')]));
+
+        this.rules.push(new Rule('Unordered List', [
+            new Pattern(/(^|\n)-\s+(.*)/g, '<li>$2</li>'),
+            new Pattern(/(^|\n)\*\s+(.*)/g, '<li>$2</li>'),
+            new Pattern(/<li>(.+)<\/li>/g, '<ul>$&</ul>'),
+        ]));
+
     }
 
     render(markdown) {

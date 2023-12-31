@@ -63,5 +63,14 @@ describe('Markdown2Html', () => {
         expect(htmlResult).toContain("<img src='https://fastly.picsum.photos/id/0/5000/3333.jpg' alt='picsum pic' >");
     });
 
+    test('should render markdown with unordered list to HTML', () => {
+        const markdown2Html = new Markdown2Html();
+        // Example markdown content with an unordered list
+        const markdownContent = '- Item 1\n- Item 2\n- Item 3';
+        // Call the render method
+        const htmlResult = markdown2Html.render(markdownContent);
+        // Assert that the rendered HTML contains the unordered list tags and items
+        expect(htmlResult).toContain('<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>');
+    });
     // Add more test cases as needed for specific functionality
 });
