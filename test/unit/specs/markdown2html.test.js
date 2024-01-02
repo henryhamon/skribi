@@ -73,6 +73,16 @@ describe('Markdown2Html', () => {
         expect(htmlResult).toContain('<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>');
     });
     
+    test('should render markdown with highlight to HTML', () => {
+        const markdown2Html = new Markdown2Html();
+        // Example markdown content with an unordered list
+        const markdownContent = 'Text\nI need to highlight these ==very important words==.'
+        // Call the render method
+        const htmlResult = markdown2Html.render(markdownContent);
+        // Assert that the rendered HTML contains the unordered list tags and items
+        expect(htmlResult).toContain('<mark>very important words</mark>');
+    });
+    
     /*
     test('should render markdown with ordered list to HTML', () => {
         const markdown2Html = new Markdown2Html();
